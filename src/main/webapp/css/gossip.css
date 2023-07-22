@@ -1,0 +1,13 @@
+body,li,td {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+#login {
+	width:250px;
+	float: left;
+}
+
+table {
+	background-color: #cccccc;
+}
