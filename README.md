@@ -9,4 +9,6 @@ JDK: Amazon Corretto jdk17.0.7_7
 
 Tomcat: apache-tomcat-9.0.78
 
+Git: Git-2.41.0.3-64-bit
+
 ===================================
