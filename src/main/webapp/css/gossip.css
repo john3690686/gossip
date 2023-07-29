@@ -11,3 +11,13 @@ body,li,td {
 table {
 	background-color: #cccccc;
 }
+
+hr {
+    color: #3333cc;
+    width: 300;
+    text-align: left
+}
+
+a {
+    color: #000000
+}

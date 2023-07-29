@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/login")
 public class Login extends HttpServlet {
-	private final String USERS = "D:\\\\John\\\\JavaWorkspace\\\\EclipseProject\\\\gossip\\\\src\\\\main\\\\webapp\\\\WEB-INF\\\\users";
-	private final String SUCCESS_PATH = "member.html";
+	private final String USERS = "D:\\John\\JavaWorkspace\\EclipseProject\\gossip\\src\\main\\webapp\\WEB-INF\\users";
+	private final String SUCCESS_PATH = "member";
 	private final String ERROR_PATH = "index.html";
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -23,8 +23,24 @@ public class Login extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
-		response.sendRedirect(login(username, password) ? SUCCESS_PATH : ERROR_PATH);
+		String page;
 
+		if (isInputted(username, password) & login(username, password)) {
+			if (request.getSession(false) != null) {
+				request.changeSessionId();
+			}
+			request.getSession().setAttribute("login", username);
+			page = SUCCESS_PATH;
+		}else {
+			page = ERROR_PATH;
+		}
+
+		response.sendRedirect(page);
+
+	}
+
+	private boolean isInputted(String username, String password) {
+		return username != null && password != null && username.trim().length() != 0 && password.trim().length() != 0;
 	}
 
 	private boolean isCorrectPassword(String password, Path userhome) throws IOException {
